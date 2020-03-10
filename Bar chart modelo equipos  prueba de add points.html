@@ -21,16 +21,20 @@ window.onload = function () {
 var titulo = "Titulo aca"
 var dat1 = {"Equip1":5,"equip2":10,"equip3":7};
 var dat2 = {"Equip1":3,"equip2":8,"equip3":9};
+
 var dataPoints = [];
 var dataPoints2 = [];
+var dataPoints3 = [];
 for(key in dat1){
     dataPoints.push({label: key, y: dat1[key]});
 }
 
-
-
 for(key2 in dat2){
     dataPoints2.push({label: key2, y: dat2[key2]});
+}
+
+for(key in dat2){
+    dataPoints3.push({label: key2, y: dat2[key + key2]});
 }
 
 
@@ -70,8 +74,20 @@ var chart = new CanvasJS.Chart("chartContainer",
 		showInLegend: "true",
 		yValueFormatString: "# Points",
 		dataPoints: dataPoints2
-		}
+		},
+	{	
+		type: "line",
+		color: "black", //color general
+		lineColor: "transparent", //color de la linea
+		markerColor: "transparent", //color de los puntos
+		name: "Total points",
+		indexLabel: "{y}",
+		showInLegend: "true",
+		yValueFormatString: "# Points",
+		indexLabelFontSize: 15,
 		
+		dataPoints: dataPoints3
+		},
       ]
     });
 
