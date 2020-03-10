@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<body>
+<script>
+window.onload = function () {
+
+
+//caca que agregue yo
+        CanvasJS.addColorSet("greenShades", //colorSet1, 2 y 3 por defecto este agrega lo que vos quieras
+                [//configuracion de colores
+
+                "#2F4F4F",
+                "#008080",
+                "#2E8B57",
+                "#3CB371",
+                "#90EE90"                
+                ]);
+// para meter cosas de php <?php echo .$field[$loop][1].; ?>
+var titulo = "Titulo aca"
+var dat1 = {"Equip1":5,"equip2":10,"equip3":7};
+var dat2 = {"Equip1":3,"equip2":8,"equip3":9};
+var dataPoints = [];
+var dataPoints2 = [];
+for(key in dat1){
+    dataPoints.push({label: key, y: dat1[key]});
+}
+
+
+
+for(key2 in dat2){
+    dataPoints2.push({label: key2, y: dat2[key2]});
+}
+
+
+var chart = new CanvasJS.Chart("chartContainer",
+	{
+		animationEnabled: true,
+	colorSet: "colorSet2", //colores
+		title:{
+		text: titulo
+		},
+		axisX:{
+        labelFontSize: 13,
+		interval: 1
+      },	
+	axisY:{
+		title: "Puntos",
+		labelFontSize: 20,
+	},	
+	toolTip: {
+		shared: true,
+		reversed: true,
+	},
+        
+      data: [
+      {
+		type: "stackedColumn",
+		name: "Placement Points",
+//		color: "#BF9820",
+		showInLegend: "true",
+		yValueFormatString: "# Points",
+        dataPoints: dataPoints
+      },
+    
+	{
+		type: "stackedColumn",
+		name: "Kill points",
+		showInLegend: "true",
+		yValueFormatString: "# Points",
+		dataPoints: dataPoints2
+		}
+		
+      ]
+    });
+
+ $("#chartContainer").CanvasJSChart();
+
+
+
+}
+
+    
+
+</script>
+<div id="chartContainer" style="height: 850px; width: 98%;"></div>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</body>
+</html>
+
